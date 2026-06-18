@@ -20,3 +20,8 @@ El acceso a médicos dermatólogos especialistas suele ser limitado, costoso o t
 2. **Procesamiento:** La aplicación del consultorio carga automáticamente la imagen y la envía al modelo YOLO entrenado.
 3. **Análisis e Inferencia:** El modelo localiza la mancha mediante un cuadro delimitador (bounding box) y calcula la probabilidad de pertenencia a una categoría (ej. "Benigno" o "Melanoma") en menos de un segundo.
 4. **Acción Automatizada:** Si el modelo detecta una lesión con alta probabilidad de malignidad (superior al 70%), el sistema genera una alerta visual roja en la interfaz y **emite una solicitud automática de interconsulta prioritaria** en la agenda del hospital para canalizar al paciente con el dermatólogo especialista en un plazo menor a 7 días. Si es benigno, se archiva en el expediente electrónico para su monitoreo en el chequeo anual.
+
+
+### Conclusiones del Experimento
+* **Análisis de Errores:** Durante las pruebas con imágenes externas, el sistema llegó a clasificar erróneamente lesiones malignas como "Benignas" con niveles de confianza críticamente bajos (menores al 40%).
+* **Propuesta de Mejora:** Esto demuestra que para un entorno clínico real, el modelo requiere ser entrenado con al menos 100-200 epochs y un dataset balanceado más extenso para reducir la tasa de falsos negativos y elevar la métrica de sensibilidad (Recall), garantizando la seguridad del paciente.
